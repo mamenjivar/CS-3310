@@ -19,45 +19,47 @@ import java.util.Random;
 public class QuickSortAlgorithm {
 
 	/**
-	 * @param args
+	 * start of program
 	 */
 	public static void main(String[] args) {
-		
+		// will populate array with random values
 		Random rand = new Random();
 		
 		System.out.println("Quick Sort Algorithm");
 		
-		// example array
-//		int[] array = {10, 7, 8, 9, 1, 5};
-		
-		// instantiates array of various sizes
-		int arraySize = 10;
+		// MODIFY THIS VALUE TO INCREASE SIZE OF ARRAY
+		int arraySize = 10000;
 		int[] array = new int[arraySize];
 		
-//		// populates array with random values
+		// populates array with random values
 		for(int i = 0; i < arraySize; i++) {
-			array[i] = rand.nextInt(50) + 1;
+			array[i] = rand.nextInt(arraySize) + 1;
 		}
 		
-		// prints out randomized array
-		System.out.print("Unordered: ");
-		printArray(array);
-		System.out.println();
-		
-		
-//		quickSort(array, 0, arraySize - 1);
-		quickSort(array, 0, array.length - 1);
-		
-		System.out.print("Quick sort: ");
-		printArray(array);
-		
-		// testing purposes for swapping values
+//		// prints out randomized array
+//		System.out.print("Unordered: ");
 //		printArray(array);
-//		swap(array, 3, 4);
-//		printArray(array);
+//		System.out.println();
+		
+		// starts timer in nanoseconds how long it takes to run through program
+		long startTime = System.nanoTime();
+		quickSort(array, 0, arraySize - 1);
+		
+		// will get total time
+		long endTime = System.nanoTime();
+		long totalTime = endTime - startTime;
+		
+		System.out.println("Time: " + totalTime);
 		
 	}
 	
+	/**
+	 * quick sort algorithm recursive
+	 * 
+	 * @param array
+	 * @param low
+	 * @param high
+	 */
 	static void quickSort(int[] array, int low, int high) {
 		int position = 0;
 		if(low < high) {
@@ -70,6 +72,7 @@ public class QuickSortAlgorithm {
 	}
 	
 	/**
+	 * will split the array (partition it)
 	 * 
 	 * @param array
 	 * @param low
@@ -79,13 +82,14 @@ public class QuickSortAlgorithm {
 	static int partition(int[] array, int low, int high) {
 		// pivot
 		int pivot = 0;
-		
+		// pivot with highest value in array
 		pivot = array[high];
 		
 		int i = 0;
 		
 		i = low - 1;
 		
+		// compares values with pivot
 		for(int j = low; j < high; j++) {
 			if(array[j] <= pivot) {
 				i++;

@@ -20,7 +20,7 @@ import java.util.Timer;
 public class MergeSortAlgorithm {
 
 	/**
-	 * @param args
+	 * start of program
 	 */
 	public static void main(String[] args) {
 		// title
@@ -29,7 +29,7 @@ public class MergeSortAlgorithm {
 		// will generate random values to populate array
 		Random rand = new Random();
 		
-		// will specify the size of the array
+		// MODIFY THIS VALUE TO INCREASE SIZE OF ARRAY
 		int arrayLength = 10000;
 
 		// example array
@@ -37,27 +37,20 @@ public class MergeSortAlgorithm {
 		
 		// will populate unsorted array with random values ranging from 1 - 100
 		for(int i = 0; i < arrayLength; i++) {
-			unsortedArray[i] = rand.nextInt(10000) + 1;
+			unsortedArray[i] = rand.nextInt(arrayLength) + 1;
 		}
-		
-		// testing purposes, printing out the unsorted array
-		System.out.print("Unsorted: ");
-		//printArray(unsortedArray);
 
+		// starts timer in nanoseconds how long it takes to run through program
 		long startTime = System.nanoTime();
 		
-		// Merge sort
-		System.out.println("Merge Sort");
+		// merge sort algorithm
 		mSort(unsortedArray, 0, arrayLength - 1);
-		System.out.print("Merge Sort: ");
-		//printArray(unsortedArray);
 		
+		// will get total time
 		long endTime = System.nanoTime();
 		long totalTime = endTime - startTime;
 		
-		System.out.println(totalTime);
-
-		// Quick sort
+		System.out.println("Time: " + totalTime);
 
 	}
 
@@ -77,10 +70,6 @@ public class MergeSortAlgorithm {
 			mSort(array, middle + 1, last);
 			merge(array, first, middle, last);
 		}
-
-//		mSort(array, first, middle);
-//		mSort(array, middle + 1, last);
-//		merge(array, first, middle, last);
 	}
 
 	static void merge(int[] array, int first, int middle, int last) {
@@ -135,6 +124,7 @@ public class MergeSortAlgorithm {
 
 	/**
 	 * print out array
+	 * 
 	 * @param array
 	 */
 	static void printArray(int[] array) {

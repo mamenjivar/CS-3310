@@ -16,15 +16,13 @@ import java.util.Random;
  *
  */
 public class ClassicalMatrixMultiplication {
-
+	// MODIFY THIS VALUE TO INCREASE MATRIX SIZE
+	static int matrixSize = 4096;
 	/**
-	 * @param args
+	 * start of program
 	 */
 	public static void main(String[] args) {
 		System.out.println("Matrix Multiplication");
-		
-		// sets the size of the n x n matrix
-		int matrixSize = 3;
 		
 		// instantiate matrices A and B and C
 		// matrices A and B are constants
@@ -33,18 +31,26 @@ public class ClassicalMatrixMultiplication {
 		int[][] matrixB = new int[matrixSize][matrixSize];
 		int[][] matrixC = new int[matrixSize][matrixSize];
 		
-		System.out.println("Matrix A");
+		System.out.println("Matrix A (ready)");
 		populateMatrix(matrixA);
-		printMatrix(matrixA);
+//		printMatrix(matrixA);
 		
-		System.out.println("Matrix B");
+		System.out.println("Matrix B (ready)");
 		populateMatrix(matrixB);
-		printMatrix(matrixB);
+//		printMatrix(matrixB);
 		
+		// starts timer in nanoseconds how long it takes to run through program
+		long startTime = System.nanoTime();
 		classicalMatrixMultiplication(matrixSize - 1, matrixA, matrixB, matrixC);
 		
-		System.out.println("Matrix C (solution)");
-		printMatrix(matrixC);
+		// will get total time
+		long endTime = System.nanoTime();
+		long totalTime = endTime - startTime;
+		
+		System.out.println("Time: " + totalTime);
+		
+//		System.out.println("Matrix C (solution)");
+//		printMatrix(matrixC);
 	}
 
 	/**
@@ -78,7 +84,7 @@ public class ClassicalMatrixMultiplication {
 		
 		for(int i = 0; i < matrix.length; i++) {
 			for(int j = 0; j < matrix[i].length; j++) {
-				matrix[i][j] = rand.nextInt(10) + 1;
+				matrix[i][j] = rand.nextInt(matrixSize) + 1;
 			}
 		}
 	}

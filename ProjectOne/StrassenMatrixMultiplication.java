@@ -18,7 +18,7 @@ import java.util.Random;
 public class StrassenMatrixMultiplication {
 
 	/**
-	 * @param args
+	 * start of program
 	 */
 	public static void main(String[] args) {
 		System.out.println("Matrix Multiplication");
